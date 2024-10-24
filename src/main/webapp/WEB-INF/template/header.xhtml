@@ -1,0 +1,23 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+      xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+      >
+    <header class="w3-container w3-indigo">
+            <div class="w3-bar">
+                <a href="#" class="w3-bar-item w3-button"><i class="fa fa-home"></i></a>
+                <a href="#" class="w3-bar-item w3-button">Log In</a>
+                <a href="#" class="w3-bar-item w3-button">Log Out</a>
+                <div class="w3-dropdown-hover">
+                    <button class="w3-button">Register <i class="fa fa-caret-down"></i></button>
+                    <div class="w3-dropdown-content w3-bar-block w3-card-4">
+                        <a href="#" class="w3-bar-item w3-button">Revenue Party</a>
+                        <h:form><h:commandLink action="ExpensePartyRegister" value="Expense Party" styleClass="w3-bar-item w3-button"/></h:form>
+                    </div>
+                </div>
+                
+                <a href="#" class="w3-bar-item w3-button w3-right"><i class="fa fa-search"></i></a>
+                <input type="text" class="w3-bar-item w3-input w3-right" style="padding: 5px;" placeholder="Search.."/>
+            </div>
+        </header>
+</html>
