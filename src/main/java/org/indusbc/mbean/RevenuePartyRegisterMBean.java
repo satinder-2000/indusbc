@@ -15,6 +15,7 @@ import jakarta.faces.flow.FlowScoped;
 import jakarta.inject.Inject;
 import jakarta.inject.Named;
 import jakarta.servlet.ServletContext;
+import jakarta.servlet.http.Part;
 import java.io.Serializable;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -56,6 +57,7 @@ public class RevenuePartyRegisterMBean implements Serializable {
     private RevenuePartyDto revenuePartyDto;
     private List<ProofOfIdDocument> proofOfIdDocList;
     private List<RevenueCategory> revenueCategoryList;
+    private Part profileImage;
     
     @Inject
     EmailEjbLocal emailEjbLocal;
@@ -225,8 +227,13 @@ public class RevenuePartyRegisterMBean implements Serializable {
     public void setRevenueCategoryList(List<RevenueCategory> revenueCategoryList) {
         this.revenueCategoryList = revenueCategoryList;
     }
-    
-    
-    
+
+    public Part getProfileImage() {
+        return profileImage;
+    }
+
+    public void setProfileImage(Part profileImage) {
+        this.profileImage = profileImage;
+    }
     
 }

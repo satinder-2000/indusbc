@@ -1,0 +1,61 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                template="/WEB-INF/template/IndusBcTemplate.xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:pt="http://xmlns.jcp.org/jsf/passthrough">
+
+    <ui:define name="content">
+        <div class="w3-col m7">
+            <div class="w3-row-padding">
+                <div class="w3-col m12">
+                    <div class="w3-card w3-round w3-white">
+                        <div class="w3-container w3-padding">
+                            <h:form enctype="multipart/form-data"> 
+                                <h4 class="w3-margin-left">Create Access</h4>
+                                <h:messages infoStyle="color:blue" errorStyle="color:red" />
+                                <!-- EMail -->
+                                <div class="w3-row w3-panel">
+                                    <div class="w3-half">
+                                        <h:outputLabel for="email" value="Email" styleClass="w3-margin-left w3-margin-bottom"/>
+                                    </div>
+                                    <div class="w3-half">
+                                        <h:inputText id="email" value="#{createAccessMBean.access.email}" styleClass="w3-margin-bottom"/> 
+                                    </div>
+                                </div>
+                                <!-- Password -->
+                                <div class="w3-row w3-panel">
+                                    <div class="w3-half">
+                                        <h:outputLabel for="password" value="Password" styleClass="w3-margin-left w3-margin-bottom"/>
+                                    </div>
+                                    <div class="w3-half">
+                                        <h:inputSecret id="password" value="#{createAccessMBean.access.password}" styleClass="w3-margin-bottom"/> 
+                                    </div>
+                                </div>
+                                <!-- Confirm Password -->
+                                <div class="w3-row w3-panel">
+                                    <div class="w3-half">
+                                        <h:outputLabel for="confirmPassword" value="Confirm Password" styleClass="w3-margin-left w3-margin-bottom"/>
+                                    </div>
+                                    <div class="w3-half">
+                                        <h:inputSecret id="confirmPassword" value="#{createAccessMBean.confirmPassword}" styleClass="w3-margin-bottom"/> 
+                                    </div>
+                                </div>
+                                <!-- Confirm Password -->
+                                <div class="w3-row w3-panel">
+                                    <div class="w3-half">
+                                        <button type="reset" value="Reset" class="w3-button w3-indigo">Reset</button>
+                                    </div>
+                                    <div class="w3-half">
+                                        <h:commandButton action="#{createAccessMBean.processForm()}" value="Submit" styleClass="w3-button w3-theme-d1 w3-margin-left w3-margin-bottom w3-indigo"/> 
+                                    </div>
+                                </div>
+                                
+                            </h:form>
+                        </div>
+                    </div>
+                </div>    
+            </div>
+        </div>
+    </ui:define>
+</ui:composition>    

@@ -9,6 +9,7 @@ import jakarta.annotation.PostConstruct;
 import jakarta.faces.application.FacesMessage;
 import jakarta.faces.context.FacesContext;
 import jakarta.faces.view.ViewScoped;
+import jakarta.inject.Inject;
 import jakarta.inject.Named;
 import jakarta.servlet.ServletContext;
 import jakarta.servlet.http.HttpServletRequest;
@@ -26,6 +27,7 @@ import org.bson.codecs.pojo.PojoCodecProvider;
 import org.bson.conversions.Bson;
 import org.indusbc.collections.Access;
 import org.indusbc.collections.ProofOfIdDocument;
+import org.indusbc.ejbs.EmailEjbLocal;
 import org.indusbc.util.IndusbcConstants;
 import org.indusbc.util.PasswordUtil;
 
@@ -41,6 +43,9 @@ public class CreateAccessMBean implements Serializable {
     
     private Access access;
     private String confirmPassword;
+    
+    @Inject
+    private EmailEjbLocal emailEjbLocal;
     
     @PostConstruct
     public void init(){
@@ -92,7 +97,10 @@ public class CreateAccessMBean implements Serializable {
             MongoCollection<Access> accessColl = mongoDatabase.getCollection("Access", Access.class);
             Bson filter = Filters.and(Filters.eq("email", access.getEmail()),Filters.eq("accessType", access.getAccessType()));
             accessColl.replaceOne(filter, access);
-            toReturn="/home/UserWelcome?faces-redirect=true";
+            LOGGER.info(String.format("Password created for Id: %s!!", access.getId()));
+            FacesContext.getCurrentInstance().addMessage("password",new FacesMessage(FacesMessage.SEVERITY_INFO, "Password set successfully.","Password set successfully."));
+            emailEjbLocal.sendAccessCreatedEmail(access);
+            return null;
         }
         
         return toReturn;

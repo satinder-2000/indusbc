@@ -12,7 +12,7 @@
                     <div class="w3-card w3-round w3-white">
                         <div class="w3-container w3-padding">
                             <h:form enctype="multipart/form-data"> 
-                                <h4 class="w3-margin-left">Expense Party Register -Confirm</h4>
+                                <h4 class="w3-margin-left">Revenue Party Register -Confirm</h4>
                                 <h:messages infoStyle="color:blue" errorStyle="color:red" />
                                 <!-- EMail -->
                                 <div class="w3-row w3-panel">
@@ -20,7 +20,7 @@
                                         <h:outputLabel for="email" value="Email" styleClass="w3-margin-left w3-margin-bottom"/>
                                     </div>
                                     <div class="w3-half">
-                                        <h:outputText id="email" value="#{expensePartyRegisterMBean.expensePartyDto.email}" styleClass="w3-margin-bottom"/> 
+                                        <h:outputText id="email" value="#{revenuePartyRegisterMBean.revenuePartyDto.email}" styleClass="w3-margin-bottom"/> 
                                     </div>
                                 </div>
                                 <!-- Name -->
@@ -29,7 +29,7 @@
                                         <h:outputLabel for="name" value="Name" styleClass="w3-margin-left w3-margin-bottom"/>
                                     </div>
                                     <div class="w3-half">
-                                        <h:outputText id="name" value="#{expensePartyRegisterMBean.expensePartyDto.name}" styleClass="w3-margin-bottom"/> 
+                                        <h:outputText id="name" value="#{revenuePartyRegisterMBean.revenuePartyDto.name}" styleClass="w3-margin-bottom"/> 
                                     </div>
                                 </div>
                                 <!-- Organisation -->
@@ -38,7 +38,7 @@
                                         <h:outputLabel for="orgn" value="Organisation" styleClass="w3-margin-left w3-margin-bottom"/>
                                     </div>
                                     <div class="w3-half">
-                                        <h:outputText id="orgn" value="#{expensePartyRegisterMBean.expensePartyDto.organisation}" styleClass="w3-margin-bottom"/> 
+                                        <h:outputText id="orgn" value="#{revenuePartyRegisterMBean.revenuePartyDto.organisation}" styleClass="w3-margin-bottom"/> 
                                     </div>
                                 </div>
                                 <!-- Proof Of Id Doc -->
@@ -47,7 +47,7 @@
                                         <h:outputLabel for="poIdDoc" value="Proof Of Id Document" styleClass="w3-margin-left w3-margin-bottom"/>
                                     </div>
                                     <div class="w3-half">
-                                        <h:outputText id="poIdDoc" value="#{expensePartyRegisterMBean.expensePartyDto.proofOfIdDocument}" styleClass="w3-margin-bottom"/>
+                                        <h:outputText id="poIdDoc" value="#{revenuePartyRegisterMBean.revenuePartyDto.proofOfIdDocument}" styleClass="w3-margin-bottom"/>
                                     </div>
                                 </div>
                                 <!-- Document Id -->
@@ -56,17 +56,17 @@
                                         <h:outputLabel for="documentId" value="Document Id" styleClass="w3-margin-left w3-margin-bottom"/>
                                     </div>
                                     <div class="w3-half">
-                                        <h:outputText id="documentId" value="#{expensePartyRegisterMBean.expensePartyDto.documentId}" styleClass="w3-margin-bottom"/>
+                                        <h:outputText id="documentId" value="#{revenuePartyRegisterMBean.revenuePartyDto.documentId}" styleClass="w3-margin-bottom"/>
                                     </div>
                                 </div>
-                                <!-- Expense Accounts -->
+                                <!-- Revenue Accounts -->
                                 <div class="w3-row w3-panel">
                                     <div class="w3-half">
-                                        <h:outputLabel for="expAccts" value="Expense Accounts" styleClass="w3-margin-left w3-margin-bottom"/>
+                                        <h:outputLabel for="expAccts" value="Revenue Accounts" styleClass="w3-margin-left w3-margin-bottom"/>
                                     </div>
                                     <div class="w3-half">
-                                        <ui:repeat value="#{expensePartyRegisterMBean.expensePartyDto.expenseAccounts}" var="eA" class="w3-margin-bottom">
-                                            <li><h:outputText value="#{eA}"/></li>
+                                        <ui:repeat value="#{revenuePartyRegisterMBean.revenuePartyDto.revenueAccounts}" var="rA" class="w3-margin-bottom">
+                                            <li><h:outputText value="#{rA}"/></li>
                                         </ui:repeat>
                                     </div>
                                 </div>
@@ -76,7 +76,7 @@
                                         <h:outputLabel for="memDate" value="Memorable Date" styleClass="w3-margin-left w3-margin-bottom"/>
                                     </div>
                                     <div class="w3-half">
-                                        <h:outputText id="memDate" value="#{expensePartyRegisterMBean.expensePartyDto.memorableDate}" styleClass="w3-margin-bottom"/> 
+                                        <h:outputText id="memDate" value="#{revenuePartyRegisterMBean.revenuePartyDto.memorableDate}" styleClass="w3-margin-bottom"/> 
                                     </div>
                                 </div>
                                 <!-- Profile Image /Logo  -->
@@ -91,10 +91,10 @@
                                 <!-- Continue -->
                                 <div class="w3-row w3-panel">
                                     <div class="w3-half">
-                                        <h:commandButton action="#{expensePartyRegisterMBean.amendExpenseParty()}" value="Amend" styleClass="w3-button w3-theme-d1 w3-margin-left w3-margin-bottom w3-indigo"/>
+                                        <h:commandButton action="#{revenuePartyRegisterMBean.amendRevenueParty()}" value="Amend" styleClass="w3-button w3-theme-d1 w3-margin-left w3-margin-bottom w3-indigo"/>
                                     </div>
                                     <div class="w3-half">
-                                        <h:commandButton value="Submit" action="returnFromExpensePartyRegisterFlow" styleClass="w3-button w3-theme-d1 w3-margin-left w3-margin-bottom w3-indigo"/>
+                                        <h:commandButton value="Submit" action="returnFromRevenuePartyRegisterFlow" styleClass="w3-button w3-theme-d1 w3-margin-left w3-margin-bottom w3-indigo"/>
                                     </div>
                                 </div>
                             </h:form>

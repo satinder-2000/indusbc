@@ -81,4 +81,42 @@ public class EmailEjb implements EmailEjbLocal {
         }
     }
 
+    @Override
+    public void sendAccessCreatedEmail(Access access) {
+        String username=mailSession.getProperty("mail.smtp.user");
+        String password=mailSession.getProperty("password");
+        
+        final URLName url= new URLName(mailSession.getProperty("mail.transport.mail"), mailSession.getProperty("mail.smtp.host"),
+        -1, null, username, null);
+        
+        mailSession.setPasswordAuthentication(url, new PasswordAuthentication(username, password));
+        LOGGER.info("MailSession set successfully!!");
+        MimeMessage mimeMessage= new MimeMessage(mailSession);
+        Multipart multipart= new MimeMultipart();
+        StringBuilder htmlMsg = new StringBuilder("<html><body>");
+        htmlMsg.append("<h2>Dear, ").append(access.getEmail()).append("</h2>");
+        htmlMsg.append("<p>Congratulations on completing your access details successfully!!").append(".</p>");
+        htmlMsg.append("<p>You may now proceed to the website and login to your account.</p>");
+        htmlMsg.append("<a href=\"").append(webURI).append("\">")
+                .append(webURI)
+                .append("</a>");
+        htmlMsg.append("<p>Best Wishes, <br/>www.indusbc.org</p>");
+        htmlMsg.append("</body></html>");
+        MimeBodyPart htmlPart = new MimeBodyPart();
+        try{
+            htmlPart.setContent( htmlMsg.toString(), "text/html; charset=utf-8" );
+            multipart.addBodyPart(htmlPart);
+            mimeMessage.setSender(new InternetAddress(sender));
+            mimeMessage.setRecipient(Message.RecipientType.TO,new InternetAddress(access.getEmail()));
+            mimeMessage.setContent(multipart);
+            mimeMessage.setSubject("Welcome. Access Confirmed!!");
+            Transport.send(mimeMessage);
+            LOGGER.info("Email sent successfully....");
+        }catch(MessagingException ex){
+            LOGGER.severe(ex.getMessage());
+        }
+    }
+    
+    
+
 }

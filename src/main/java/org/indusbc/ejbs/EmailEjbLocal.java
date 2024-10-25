@@ -11,5 +11,7 @@ import org.indusbc.collections.Access;
 public interface EmailEjbLocal {
     
     public void sendRegistrationEmail(Access access);
+
+    public void sendAccessCreatedEmail(Access access);
     
 }
