@@ -1,0 +1,48 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                template="/WEB-INF/template/IndusBcTemplate.xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:pt="http://xmlns.jcp.org/jsf/passthrough">
+
+    <ui:define name="content">
+        <div class="w3-col s7 w3-container">
+            <h:form enctype="multipart/form-data"> 
+                <h4 class="w3-margin-left">Expense Party - Home</h4>
+                <div class="w3-panel">
+                    <p>Select from your Accounts below for further actions.</p>
+                    <div class="w3-lime w3-display-container">
+                        <span onclick="this.parentElement.style.display = 'none'"
+                              class="w3-button w3-large w3-display-topright">x</span>
+                        <b>Warning!</b>
+                        <p>Max limit for Money Out is YTD Balance</p>
+                    </div>
+                </div>
+                <table class="w3-table w3-striped">
+                    <tr>
+                        <th>Account Name</th>
+                        <th>YTD Balance</th>
+                        <th>Move Money</th>
+                        <th>View Transactions</th>
+                    </tr>
+                    <ui:repeat value="#{revenueAccountsActionsMBean.partyRevenueAccounts}" var="ra">
+                        <tr>
+                            <td>#{ra.name}</td>
+                            <td>#{ra.ytdBalance}</td>
+                            <td><h:link value="Move Money" outcome="#{request.contextPath}/pmts/MoveMoneyRevenueAccount">
+                                    <f:param name="accountId" value="#{ra.id}"/>
+                                </h:link>
+                            </td>
+                            <td> <h:link value="View Transactions" outcome="#{request.contextPath}/trans/RevenueAccountTransactions">
+                                    <f:param name="accountId" value="#{ra.id}"/>
+                                </h:link>  
+                            </td>
+                        </tr>
+                   </ui:repeat>
+                </table>
+
+            </h:form>
+        </div>
+    </ui:define>
+</ui:composition>
+

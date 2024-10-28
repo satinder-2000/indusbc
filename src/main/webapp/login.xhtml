@@ -1,0 +1,43 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                template="/WEB-INF/template/IndusBcTemplate.xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:pt="http://xmlns.jcp.org/jsf/passthrough">
+
+    <ui:define name="content">
+        <div class="w3-col s7 w3-container">
+            <h:form enctype="multipart/form-data"> 
+                <h4 class="w3-margin-left">Log In</h4>
+                <h:messages infoStyle="color:blue" errorStyle="color:red" />
+                <!-- EMail -->
+                <div class="w3-row w3-panel">
+                    <div class="w3-half">
+                        <h:outputLabel for="email" value="Email" styleClass="w3-margin-left w3-margin-bottom"/>
+                    </div>
+                    <div class="w3-half">
+                        <h:inputText id="email" value="#{loginMBean.email}" styleClass="w3-margin-bottom"/> 
+                    </div>
+                </div>
+                <!-- Password -->
+                <div class="w3-row w3-panel">
+                    <div class="w3-half">
+                        <h:outputLabel for="password" value="Password" styleClass="w3-margin-left w3-margin-bottom"/>
+                    </div>
+                    <div class="w3-half">
+                        <h:inputSecret id="password" value="#{loginMBean.password}" styleClass="w3-margin-bottom"/> 
+                    </div>
+                </div>
+                <!-- Perform Login -->
+                <div class="w3-row w3-panel">
+                    <div class="w3-half w3-center">
+                        <button type="reset" value="Reset" class="w3-button w3-indigo">Reset</button>
+                    </div>
+                    <div class="w3-half w3-center">
+                        <h:commandButton action="#{loginMBean.login()}" value="Submit" styleClass="w3-button w3-indigo"/> 
+                    </div>
+                </div>
+            </h:form>
+        </div>
+    </ui:define>    
+</ui:composition>

@@ -40,5 +40,26 @@
             <to-view-id>/flowreturns/RevenuePartyRegister-return.xhtml</to-view-id>
         </navigation-case>
     </navigation-rule>
+    <navigation-rule>
+        <from-view-id>/home/RevenuePartyHome.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>/indusbc9jsf/trans/RevenueAccountTransactions</from-outcome>
+            <to-view-id>/trans/RevenueAccountTransactions.xhtml?faces-redirect=true</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <from-view-id>/home/RevenuePartyHome.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>/indusbc9jsf/pmts/MoveMoneyRevenueAccount</from-outcome>
+            <to-view-id>/pmts/MoveMoneyRevenueAccount.xhtml?faces-redirect=true</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <from-view-id>/trans/RevenueAccountTransactions.xhml</from-view-id>
+        <navigation-case>
+            <from-outcome>/LogoutConfirm</from-outcome>
+            <to-view-id>/LogoutConfirm.xhtml?faces-redirect=true</to-view-id>
+        </navigation-case>
+    </navigation-rule>
 
 </faces-config>

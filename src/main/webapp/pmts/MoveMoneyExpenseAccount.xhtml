@@ -1,0 +1,45 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                template="/WEB-INF/template/IndusBcTemplate.xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:pt="http://xmlns.jcp.org/jsf/passthrough">
+
+    <ui:define name="content">
+        <div class="w3-col s7 w3-container">
+            <h4 class="w3-margin-left">Manage Expense Account</h4>
+            <div class="w3-lime w3-display-container">
+                <span onclick="this.parentElement.style.display = 'none'"
+                      class="w3-button w3-large w3-display-topright">&times;</span>
+                <b>Warning!</b>
+                <p>Max limit for Money Out is YTD Balance</p>
+                <h:form> 
+                <h:messages infoStyle="color:blue" errorStyle="color:red" />
+                <!-- EMail -->
+                <div class="w3-panel">
+                    <div class="w3-row">
+                        <div class="w3-half">
+                            <h:outputText value="Account Name"/>
+                        </div>
+                        <div class="w3-half">
+                            <h:outputText value="#{moveMoneyExpenseAccountMBean.expenseAccount.name}"/>
+                        </div>
+                    </div>
+                    <div class="w3-row">
+                        <div class="w3-third">
+                            <h:outputText value="Pay Money In"/>
+                        </div>
+                        <div class="w3-third">
+                            <h:inputText id="moneyIn" value="#{moveMoneyExpenseAccountMBean.moneyIn}"/>
+                        </div>
+                        <div class="w3-third">
+                            <h:commandLink action="#{moveMoneyExpenseAccountMBean.payMoneyIn()}" value="Pay Now">
+                                <f:ajax execute="@form" render="@form"/>
+                            </h:commandLink>
+                        </div>
+                    </div>
+            </div>
+                </h:form>
+        </div>
+    </ui:define>
+</ui:composition>

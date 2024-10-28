@@ -29,9 +29,9 @@ public class LogoutMBean {
     
     public String logout(){
         HttpServletRequest request=(HttpServletRequest) FacesContext.getCurrentInstance().getExternalContext().getRequest();
-        HttpSession session = request.getSession(false);
+        HttpSession session=request.getSession();
         session.removeAttribute("access");
-        return "/LogoutConfirm";
+        return "/logoutConfirm?faces-redirect=true";
     }
     
 }
